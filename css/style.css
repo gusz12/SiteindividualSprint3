@@ -3,11 +3,11 @@ body{
 
 }
 
-.titulos{
+.header{
     display: flex;
     margin: 0;
-    background-color: whitesmoke;
-    color: black;
+    background-color: black;
+    color: white;
     border-bottom: solid 5px green;
     justify-content: space-around;
     align-items: center;
@@ -15,4 +15,5 @@ body{
 }
 #aventures{
     font-size: 80%;
+
 }
