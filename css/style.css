@@ -1,1 +1,18 @@
+body{
+    background-color: black;
 
+}
+
+.titulos{
+    display: flex;
+    margin: 0;
+    background-color: whitesmoke;
+    color: black;
+    border-bottom: solid 5px green;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+#aventures{
+    font-size: 80%;
+}
