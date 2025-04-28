@@ -2,18 +2,23 @@ body{
     background-color: black;
 
 }
-
-.header{
+/* Navbar site */
+.navbar{
     display: flex;
     margin: 0;
     background-color: black;
     color: white;
-    border-bottom: solid 5px green;
+    border-bottom: solid 1px green;
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
 }
+
 #aventures{
     font-size: 80%;
 
 }
+#logo{
+    width: 17%;
+}
+
