@@ -19,20 +19,19 @@
   <!--header inicio-->
   <div class="header">
     <div class="container">
-      <h1 class="titulo">AquaTech</h1>
+
       <ul class="navbar">
         <li>
-          <a href="index.html">Inicial</a>
+          <a href="index.html">Home</a>
         </li>
         <li>
-          <a href="simulador.html">Simulador</a>
+          <a href="simulador.html">Cidadela</a>
         </li>
-        <li>|</li>
         <li>
           <a href="login.html">Login</a>
         </li>
         <li class="agora">
-          <a href="#">Cadastro</a>
+          Cadastro
         </li>
       </ul>
     </div>
@@ -53,13 +52,33 @@
                          Para inserir mais um campo, copie uma das inputs abaixo.
                          Assim que inserir vá para o script abaixo.
                      -->
-          <div class="campo">
+          <!-- <div class="campo">
             <span>Código de ativação:</span>
             <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
-          </div>
+          </div> -->
           <div class="campo">
             <span>Nome:</span>
             <input id="nome_input" type="text" placeholder="Seu nome" />
+          </div>
+          <!-- campo a ser colocado no js -->
+          <div class="campo">
+            <span>Sobrenome:</span>
+            <input id="sobrenome_input" type="text" placeholder="Seu sobrenome" />
+          </div>
+                    <!-- campo a ser colocado no js -->
+          <div class="campo">
+            <span>Genero:</span>
+            <select id="genero_input">
+              <option value="#">Selecione uma opção</option>
+              <option value="masculino">Masculino</option>
+              <option value="feminino">Feminino</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+          <!-- campo a ser adicionado no js  -->
+          <div class="campo">
+            <span>Data de nascimento:</span>
+            <input type="date" id="dtNasc_input">
           </div>
           <div class="campo">
             <span>E-mail:</span>
