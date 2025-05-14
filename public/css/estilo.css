@@ -27,14 +27,24 @@ body {
   color: white;
   font-size: 120%;
   background-color: #11D53C;
-  border-radius: 30%;
+  border: inset white  solid 2px;
 }
 .container button:hover{
   color: white;
-  
-  border: solid white 2px;
+  cursor: pointer;
+  border: solid white 2px ;
   background-color: #11D53C;
-  border-radius: 20%;
+}
+.container button:active{
+  color: white;
+  
+  border: solid white 2px outset;
+  background-color: #13d43db6;
+}
+
+.container select{
+  color: white;
+  background-color: #11D53C;
 }
 .header {
   height: var(--tamanho-header);
@@ -45,6 +55,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
+  font-size: 150%;
 }
 
 .header a {
@@ -292,6 +303,7 @@ body {
   margin-top: 20px;
 }
 
+
 .loading-div {
   width: 50px;
   display: none;
@@ -380,8 +392,8 @@ input {
 }
 
 .simulador .container {
+  background-image: url();
   flex-direction: column;
-  overflow: scroll; 
   height: var(--tamanho-simulador);
 }
 
@@ -430,4 +442,26 @@ input {
   50%  {transform: rotate(25deg)}
   75%  {transform: rotate(-25deg)}
   100% {transform: rotate(25deg)}
+}
+.favorito{
+  margin-left: 10%;
+}
+.imagenshoje{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#imagem1{
+  border: solid 2px #11D53C;
+  margin-left: 40%;
+  width: 20%;
+}
+#imagem2{
+  border: solid 2px #11D53C;
+  margin-left: 10%;
+  width: 20%;
+}
+
+.segundapagina{
+  height: 100vh;
 }

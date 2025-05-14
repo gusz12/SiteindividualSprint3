@@ -78,45 +78,65 @@
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>
           </div>
+        </div>
+          <div class="segundapagina">
+            <div class="container">
+              <div class="favorito">
+                <p>
+                  Qual a sua temporada e episódio favorito?<br>
+                  Selecione abaixo:
+                </p>
+                <select id="ipt_temporada">
+                  <option value="#">Selecione uma temporada!</option>
+                  <option value="1">1º Temporada</option>
+                  <option value="2">2º Temporada</option>
+                  <option value="3">3º Temporada</option>
+                  <option value="4">4º Temporada</option>
+                  <option value="5">5º Temporada</option>
+                  <option value="6">6º Temporada</option>
+                  <option value="7">7º Temporada</option>
+                </select>
+                <p>
+                  Selecione seu episódio favorito:
+                </p>
+                <select id="ipt_ep">
+                  <option value="#">Selecione um episódio!</option>
+                  <option value="1">1º Episódio</option>
+                  <option value="2">2º Episódio</option>
+                  <option value="3">3º Episódio</option>
+                  <option value="4">4º Episódio</option>
+                  <option value="5">5º Episódio</option>
+                  <option value="6">6º Episódio</option>
+                  <option value="7">7º Episódio</option>
+                </select>
+                <br><br>
+                <!-- conectar ao banco de dados -->
+                <button onclick="cadastro()">Cadastrar</button>
 
-          
-          <div class="container">
-            <div>
-              <p>
-                Qual a sua temporada e episódio favorito?<br>
-                Selecione abaixo:
-              </p>
-              <select id="ipt_temporada">
-                <option value="#">Selecione uma temporada!</option>
-                <option value="1">1º Temporada</option>
-                <option value="2">2º Temporada</option>
-                <option value="3">3º Temporada</option>
-                <option value="4">4º Temporada</option>
-                <option value="5">5º Temporada</option>
-                <option value="6">6º Temporada</option>
-                <option value="7">7º Temporada</option>
-              </select>
-              <p>
-                Selecione seu episódio favorito:
-              </p>
-              <select id="ipt_ep">
-                <option value="#">Selecione um episódio!</option>
-                <option value="1">1º Episódio</option>
-                <option value="2">2º Episódio</option>
-                <option value="3">3º Episódio</option>
-                <option value="4">4º Episódio</option>
-                <option value="5">5º Episódio</option>
-                <option value="6">6º Episódio</option>
-                <option value="7">7º Episódio</option>
-              </select>
+                <!-- Noticias -->
+              </div class="imagenshoje">
+                
+                    <div id="imagem1">
+                      <img src="assets/images/image 5.png" alt="" width="100%">
+                      <p>
+                        Veja com qual Rick você combina!
+                      </p>
+                    </div>
+                    <div id="imagem2">
+                      <img src="assets/images/image 13.png" alt="" width="100%">
+                      <p>
+                        Você sobreviveria a um episódio de Rick and Morty?
+                      </p>
+                    </div>
 
-              <!-- conectar ao banco de dados -->
-              <button onclick="cadastro()">Cadastrar</button>
             </div>
-            <div>
+            
+            <img id="RickAbrindoOlhosdoMorty" src="assets/images/RickAbrindoOlhosdoMorty.png" width="20%">
+          </div>
 
-            </div>
-            <div></div>
+          <!-- terceira página -->
+          <div class="terceirapagina">
+            
           </div>
   
     <div class="footer">
