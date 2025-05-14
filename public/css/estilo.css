@@ -20,7 +20,22 @@ body {
   width: 80%;
   margin: auto;
 }
-
+.container p{
+  color: white;
+}
+.container button{
+  color: white;
+  font-size: 120%;
+  background-color: #11D53C;
+  border-radius: 30%;
+}
+.container button:hover{
+  color: white;
+  
+  border: solid white 2px;
+  background-color: #11D53C;
+  border-radius: 20%;
+}
 .header {
   height: var(--tamanho-header);
 
