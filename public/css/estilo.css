@@ -263,7 +263,7 @@ body {
 }
 
 .caixa{
-  border: solid #11D53C 2px;
+  border: solid #11D53C 3 px;
   margin: 1%;
   border-radius: 21px;
   justify-content: center;
@@ -325,7 +325,7 @@ body {
 .login {
   height: var(--tamanho-login);
   background-size: cover;
-  background-image: url();
+  background-image: url(../assets/images/stars-galaxy-1920x1080-10307.jpg);
 }
 
 .login .container {
@@ -496,8 +496,28 @@ input {
 /* ------------------------------------------------------------ */
 /* SIMULADOR */
 
+.headerCidadela{
+   height: var(--tamanho-header);
+   background-image: url('../assets/images/backheader.jpg');
+   background-size: cover;
+}
+
+.headerCidadela .container {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 150%;
+}
+
+.headerCidadela a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
 .simulador {
   color: white;
+  background-image: url('../assets/images/stars-galaxy-1920x1080-10307.jpg') !important;
+  background-size: cover;
 }
 
 .simulador .container {
