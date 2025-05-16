@@ -54,28 +54,46 @@ body {
   background-color: #13d43db6;
 }
 
-#rickHome{
-position: block;
-margin-bottom: 0%;
+#rickHome {
+  position: absolute; /* Para sobrepor os outros elementos */
+  top: 50%; /* Centraliza a imagem */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Ajuste para centralizar */
+  width: 40%;
+  z-index: 2; /* Garante que fique acima dos polígonos */
+  animation: rotatePortal 10s infinite linear; /* Animação de rotação contínua */
 }
 
-.imagens{
+.imagens {
   display: flex;
   align-items: center;
   background-color: #ED145B;
-}
-#elipse{
-  margin-left: 20%;
-  margin-bottom: 0%;
-
+  position: relative; /* Necessário para que a imagem se sobreponha */
+  z-index: 1; /* Coloca os polígonos abaixo da imagem */
 }
 
-#poligono1{
-  margin-right: 20%;
+#elipse, #poligono1, #poligono2 {
+  position: absolute; /* Permite que as imagens fiquem em camadas */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-#poligono2{
-  margin-left: 0%;
+#poligono1 {
+  animation: rotatePortal 10s infinite linear;
+}
+
+#poligono2 {
+  animation: rotatePortal 10s infinite linear;
+}
+
+@keyframes rotatePortal {
+  0% {
+    transform: rotate(deg) translate(-50%, -50%);
+  }
+  100% {
+    transform: rotate(0deg) translate(-50%, -50%);
+  }
 }
 /* Estilização de select e opções*/
 .container select{
