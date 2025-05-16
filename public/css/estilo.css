@@ -514,18 +514,53 @@ input {
   color: whitesmoke;
 }
 
+.container{
+  display: flex;
+}
+.container.simulador{
+  justify-content: flex-end;
+}
+
 .simulador {
   color: white;
   background-image: url('../assets/images/stars-galaxy-1920x1080-10307.jpg') !important;
   background-size: cover;
+  display: flex;
+  flex-direction: row;
 }
 
 .simulador .container {
   background-image: url();
-  flex-direction: column;
   height: var(--tamanho-simulador);
+  
 }
 
+#tituloCidadela{
+  font-size: 1200%;
+  margin-left: -15%;
+}
+
+/* .conteudo{
+
+} */
+
+#nave{
+  position: absolute;
+  width: 50%;
+  height: auto;
+  margin-left: 10%;
+  margin-top: 5%;
+  margin-right: 0%;
+  background-size: cover;
+}
+
+#planeta {
+  position: relative;
+  left: 80%;
+  align-self: center;
+  width: 20%;
+  height: auto;
+}
 
 /* ------------------------------------------------------------ */
 /* ALERTA */
