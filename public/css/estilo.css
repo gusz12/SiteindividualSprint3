@@ -36,10 +36,10 @@ body {
   color: white;
   font-size: 120%;
   background-color: #11D53C;
-  border: inset white  solid 2px;
+  border: white  solid 2px;
 }
 
-/* Botão após ponteiro estar emcima */
+/* Botão após ponteiro estar em cima */
 .container button:hover{
   color: white;
   cursor: pointer;
@@ -56,45 +56,37 @@ body {
 
 #rickHome {
   position: absolute; /* Para sobrepor os outros elementos */
-  top: 50%; /* Centraliza a imagem */
-  left: 50%;
+  left: 70%; /*70 é o normal */
   transform: translate(-50%, -50%); /* Ajuste para centralizar */
-  width: 40%;
+  width: 35%;
   z-index: 2; /* Garante que fique acima dos polígonos */
-  animation: rotatePortal 10s infinite linear; /* Animação de rotação contínua */
 }
 
 .imagens {
   display: flex;
   align-items: center;
-  background-color: #ED145B;
   position: relative; /* Necessário para que a imagem se sobreponha */
   z-index: 1; /* Coloca os polígonos abaixo da imagem */
-}
-
-#elipse, #poligono1, #poligono2 {
-  position: absolute; /* Permite que as imagens fiquem em camadas */
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 0%;
 }
 
-#poligono1 {
-  animation: rotatePortal 10s infinite linear;
+#elipse  {
+  position: absolute; /* Permite que as imagens fiquem em camadas */
+  z-index: 1;
+  transform: scale(260%, 183%) translate(38%, 0%);
+
+}
+#poligono1{
+  position: absolute; /* Permite que as imagens fiquem em camadas */
+  transform: scale(260%, 183%) translate(10%, 0%) rotate(-5deg);
+
+}
+#poligono2{
+  position: absolute; /* Permite que as imagens fiquem em camadas */
+    transform: scale(260%, 183%) translate(10%, 0%);
 }
 
-#poligono2 {
-  animation: rotatePortal 10s infinite linear;
-}
-
-@keyframes rotatePortal {
-  0% {
-    transform: rotate(deg) translate(-50%, -50%);
-  }
-  100% {
-    transform: rotate(0deg) translate(-50%, -50%);
-  }
-}
 /* Estilização de select e opções*/
 .container select{
   color: white;
@@ -290,6 +282,7 @@ body {
 /* Página 3 */
 .caixadeimagens{
   justify-content: center;
+  text-align: center;
 
 }
 .caixa1{
@@ -318,8 +311,8 @@ body {
 
 #caixaMorty{
   background-color: #EBE437;
-   transform: scaleX(-1);
-   justify-self: center;
+  transform: scaleX(-1);
+  justify-self: center;
 }
 
 #caixaSummer{
@@ -356,8 +349,14 @@ body {
 .footer .container .version {
   font-size: 12px;
 }
-
-
+#armaFooter{
+  width: 5%;
+  height: 90%;
+}
+#portalFooter{
+  width: 5%;
+  height: 90%;
+}
 
 /* ------------------------------------------------------------ */
 /* LOGIN */
