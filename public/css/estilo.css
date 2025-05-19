@@ -55,9 +55,9 @@ body {
 }
 
 #rickHome {
-  position: absolute; /* Para sobrepor os outros elementos */
+  position: absolute; 
   left: 70%; /*70 é o normal */
-  transform: translate(-50%, -50%); /* Ajuste para centralizar */
+  transform: translate(-50%, -50%); 
   width: 35%;
   z-index: 2; /* Garante que fique acima dos polígonos */
 }
@@ -65,7 +65,7 @@ body {
 .imagens {
   display: flex;
   align-items: center;
-  position: relative; /* Necessário para que a imagem se sobreponha */
+  position: relative; 
   z-index: 1; /* Coloca os polígonos abaixo da imagem */
   top: 50%;
   left: 0%;
@@ -87,6 +87,11 @@ body {
     transform: scale(260%, 183%) translate(10%, 0%);
 }
 
+@keframes girar{
+  
+}
+
+/* ------------------------------------------------------------------------ */
 /* Estilização de select e opções*/
 .container select{
   color: white;
@@ -356,6 +361,12 @@ body {
 #portalFooter{
   width: 5%;
   height: 90%;
+}
+
+/* ------------------------------------------------------------ */
+/* CADASTRO */
+.doisCampos{
+  
 }
 
 /* ------------------------------------------------------------ */

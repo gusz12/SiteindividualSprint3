@@ -14,12 +14,8 @@ genero varchar(15) not null,
 dataNascimento date not null,
 email varchar(50) not null,
 senha varchar(80) not null,
-pontosTotaisJogador int not null,
 temporadaFavorita int,
-episodioFavorito int,
-dataCriacaoConta datetime not null,
-fkUsuarioIndicado int,
-foreign key (fkUsuarioIndicado) references usuarios(idUsuario)
+episodioFavorito int
 );
 
 create table jogos(
@@ -79,4 +75,3 @@ primary key(fkUsuario, fkNoticia),
 foreign key (fkUsuario) references usuarios(idUsuario),
 foreign key (fkNoticia) references noticias(idNoticia)
 );
-
