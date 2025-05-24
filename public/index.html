@@ -122,23 +122,27 @@
 
                 <!-- Noticias -->
               </div class="imagenshoje">
-                
+                    
                     <div id="imagem1">
-                      <img src="assets/images/image 5.png" alt="" width="100%">
+                      <a href="simulador.html" >
+                      <img src="assets/images/image 5.png" alt="" width="100%" href="simulador.html">
                       <p>
                         Veja com qual Rick você combina!
                       </p>
+                      </a>
                     </div>
+                    
                     <div id="imagem2">
+                      <a href="simulador.html">
                       <img src="assets/images/image 13.png" alt="" width="100%">
+
                       <p>
                         Você sobreviveria a um episódio de Rick and Morty?
                       </p>
+                      </a>
                     </div>
 
             </div>
-            
-            <img id="RickAbrindoOlhosdoMorty" src="assets/images/RickAbrindoOlhosdoMorty.png" width="20%">
           </div>
 
           <!-- terceira página -->
@@ -231,3 +235,9 @@
   </body>
 
 </html>
+<script>
+  function cadastro() {
+    sessionStorage.clear();
+    window.location = "../cadastro.html";
+}
+</script>
