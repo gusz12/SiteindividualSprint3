@@ -20,6 +20,7 @@ body {
 
 .pagina p{
   color: white;
+  
 }
 
 .container {
@@ -37,6 +38,7 @@ body {
   font-size: 120%;
   background-color: #11D53C;
   border: white  solid 2px;
+  border-radius: 20px;
 }
 
 /* Botão após ponteiro estar em cima */
@@ -45,6 +47,7 @@ body {
   cursor: pointer;
   border: solid white 2px ;
   background-color: #11D53C;
+  border-radius: 20px;
 }
 
 /* Botão após ser acionado */
@@ -52,43 +55,40 @@ body {
   color: white;
   border: solid white 2px outset;
   background-color: #13d43db6;
+  border-radius: 20px;
 }
 
 #rickHome {
   position: absolute; 
-  left: 70%; /*70 é o normal */
+  left: 70%; 
   transform: translate(-50%, -50%); 
   width: 35%;
-  z-index: 2; /* Garante que fique acima dos polígonos */
+  z-index: 2;
 }
 
 .imagens {
   display: flex;
   align-items: center;
   position: relative; 
-  z-index: 1; /* Coloca os polígonos abaixo da imagem */
+  z-index: 1; 
   top: 50%;
   left: 0%;
 }
 
 #elipse  {
-  position: absolute; /* Permite que as imagens fiquem em camadas */
+  position: absolute; 
   z-index: 1;
   transform: scale(260%, 183%) translate(38%, 0%);
 
 }
 #poligono1{
-  position: absolute; /* Permite que as imagens fiquem em camadas */
+  position: absolute; 
   transform: scale(260%, 183%) translate(10%, 0%) rotate(-5deg);
 
 }
 #poligono2{
-  position: absolute; /* Permite que as imagens fiquem em camadas */
+  position: absolute;
     transform: scale(260%, 183%) translate(10%, 0%);
-}
-
-@keframes girar{
-  
 }
 
 /* ------------------------------------------------------------------------ */
@@ -289,51 +289,105 @@ body {
   justify-content: center;
   text-align: center;
 }
-.caixa1{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.caixa2{
-  display: flex;
-}
-
 .caixa{
   border: solid #11D53C 3 px;
   margin: 1%;
   border-radius: 21px;
   justify-content: center;
-  align-items: end;
+  align-items: flex-start;
 
+}
+.letrasCaixa{
+  width: 30%;
+  transform: translate(160%, 20%);
+  text-align: center;
+}
+#letrasRick{
+  transform: translate(160%, 20%);
+}
+#letrasMorty{
+  transform: translate(117%, 42%);
+}
+#letrasSummer{
+  transform: translate(125%, -25%);
+}
+#letrasJerry{
+  transform: translate(160%, 90%);
+}
+#letrasBeth{
+  transform: translate(139%, 20%);
+}
+#letrasBethEsp{
+  transform: translate(149%, 17%);
+}
+.caixa1{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: black;
+  height: 45%;
 }
 
 /* Estilização personalizada para personagens */
 #caixaRick{
   background-color: #32b9cd;
-  transform: scale(85%, 85%);
+  transform: scale(50%, 100%) translate(30%, 0%);
+  border: #11D53C solid 2px; 
+}
+#rickCaixa{
+  transform: scale(200%, 100%);
 }
 
 #caixaMorty{
   background-color: #EBE437;
-  transform: scaleX(-1) scale(85%, 85%);
+  transform: scaleX(-1) scale(40%, 120%) translate(0%, 2%);
   justify-self: center;
+  border: #11D53C solid 2px;
 }
+#mortyCaixa{
+  transform: scale(200%, 70%) translate(135%, 21%);
+} 
 
 #caixaSummer{
   background-color: #FF00C8;
+  transform: scale(55%, 69%) translate(0%, 4%);
+  border: #11D53C solid 2px;
+}
+#summerCaixa{
+  transform: scale(125%, 100%) translate(72%, 0%);
 }
 
+.caixa2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  height: 45%;
+}
 #caixaJerry{
   background-color: #77B410;
+  transform:  scale(50%, 254%) translate(30%, 0%);
+  border: #11D53C solid 2px;
 }
 
+#jerryCaixa{
+  transform: scale(536%, 103%) translate(0%, 4%);
+}
 #caixaBeth{
   background-color: #FF1800;
+  transform: scale(45%, 103%) translate(13%, 0%);
+  border: #11D53C solid 2px;
 }
-
+#bethCaixa{
+  transform: scale(200%, 85%) translate(3%, 9%);
+}
 #caixaEsp{
   background-color: #20D48C;
+  transform: scale(50%, 103%) translate(15%, 0%);
+  border: #11D53C solid 2px;
+}
+#espCaixa{
+  transform: scale(220%, 95%) translate(103%, 3%) scaleX(-1);
 }
 /* ------------------------------------------------------------ */
 /* FOOTER */
@@ -349,6 +403,7 @@ body {
 .footer .container {
   justify-content: center;
   text-align: center;
+  transform: translate(2%, 500%);
 }
 
 .footer .container .version {
@@ -357,13 +412,13 @@ body {
 #armaFooter{
   width: 4%;
   height: 110%;
-  transform: scale(100%, 59%)
+  transform: scale(100%, 59%) translate(10%, 290%);
 }
 #portalFooter{
   width: 4%;
   height: 110%;
-  transform: scale(100%, 59%)
-}
+  transform: scale(100%, 59%) translate(0%, 290%);
+} 
 
 /* ------------------------------------------------------------ */
 /* CADASTRO */
