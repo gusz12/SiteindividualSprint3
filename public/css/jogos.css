@@ -1,0 +1,26 @@
+#jerryjogo{
+    width: 35%;
+    height: 65%;
+}
+#easterFrase{
+    color: white;
+}
+
+
+.jogo{
+    height: 90vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+.instrucao{
+    color: white;
+}
+.footerjogos{
+    height: 7vh;
+    display: flex;
+    color: white;
+    border-top: 2px solid blue;
+    justify-content: center;
+}
