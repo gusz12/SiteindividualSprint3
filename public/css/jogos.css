@@ -24,3 +24,8 @@
     border-top: 2px solid blue;
     justify-content: center;
 }
+
+.jogo iframe{   
+    width: 27%;
+    height: 63%;
+}

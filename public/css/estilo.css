@@ -771,14 +771,12 @@ input {
 }
 
 
-Parte jogos
 .caixaRickJogos{
   border: #11D53C solid 2px;
   width: 15%;
   border: #11D53C solid 2px;
   border-radius: 20px;
   background-color: #000000;
-  width: 100%;
 }
 .caixaRickJogos:hover{
   cursor: pointer;
@@ -787,7 +785,6 @@ Parte jogos
   border: #ffffff solid 2px;
   border-radius: 20px;
   background-color: #384b41;
-  width: 100%;
 }
 .caixaRickJogos:active{
   cursor: pointer;
@@ -807,7 +804,7 @@ Parte jogos
 #imagemRick{
   width: 15%;
   z-index: 1;
-  transform: scale(500%) translate(55%, 114%);
+  transform: scale(810%, 810%) translate(36%, 59%);
 }
 
 /* Parte Quiz */
@@ -818,12 +815,14 @@ Parte jogos
   background-color: black;
   justify-content: space-around;
   height: 100%;
+  width: 100%;
 }
 .caixaQuiz:hover{
   display: flex;
   background-color: #073941;
   justify-content: space-around;
   height: 100%;
+  width: 100%;
 }
 
 /* animação cards */
