@@ -1,3 +1,7 @@
+#paginaRick{
+    height: 110vh;
+}
+
 #jerryjogo{
     width: 35%;
     height: 65%;
@@ -8,7 +12,7 @@
 
 
 .jogo{
-    height: 90vh;
+    /* height: 100vh; */
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -23,9 +27,31 @@
     color: white;
     border-top: 2px solid blue;
     justify-content: center;
-}
+} 
 
-.jogo iframe{   
+.iframe{   
     width: 27%;
     height: 63%;
+}
+#tinyRick{
+    width: 70%;
+    height: 100%;
+    overflow: auto;
+}
+#rickJogo{
+    height: 100vh;
+}
+#textoTB{
+    color: aliceblue;
+    transform: translate(6%, -1781%);
+}
+#videoTB{
+    transform: translate(50%, -230%);
+    width: 20%;
+    height: 40%;
+}
+
+
+#imagemNot1{
+    transform: scale(30%, 30%) translate(15%, 0%);
 }

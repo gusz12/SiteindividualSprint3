@@ -422,9 +422,10 @@ body {
 
 /* ------------------------------------------------------------ */
 /* CADASTRO */
-.doisCampos{
-  
-}
+
+
+
+
 
 /* ------------------------------------------------------------ */
 /* LOGIN */
@@ -705,7 +706,8 @@ input {
 }
 
 #portalJogos{
-  transform: scale(75%);
+  transform: scale(25.7%, 19.7%) translate(0%, -204%);
+  border-radius: 95px
 
 }
 #portalCidadela{
@@ -745,9 +747,12 @@ input {
   height: 100%;
   border: #11D53C solid 2px;
   border-radius: 20px;
-  background-color: #000000;
+  background-image: url(../assets/images/stars-galaxy-1920x1080-10307.jpg);
   display: flex;
   justify-content: center;
+}
+#naveRickJogo{
+  transform: scale(30%, 30%) translate(0%, -50%);
 }
 #MRButt:hover{
   cursor: pointer;
@@ -776,7 +781,7 @@ input {
   width: 15%;
   border: #11D53C solid 2px;
   border-radius: 20px;
-  background-color: #000000;
+  background-image: url(../assets/images/labJogo.jpg);
 }
 .caixaRickJogos:hover{
   cursor: pointer;
