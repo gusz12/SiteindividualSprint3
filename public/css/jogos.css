@@ -12,7 +12,7 @@
 
 
 .jogo{
-    /* height: 100vh; */
+    height: 100vh;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -30,8 +30,7 @@
 } 
 
 .iframe{   
-    width: 27%;
-    height: 63%;
+    transform: scale(230%, 230%) translate(0%, 30%)
 }
 #tinyRick{
     width: 70%;
@@ -43,15 +42,26 @@
 }
 #textoTB{
     color: aliceblue;
-    transform: translate(6%, -1781%);
+    transform: translate(10%, -990%);
 }
 #videoTB{
-    transform: translate(50%, -230%);
+    transform: translate(50%, -272%);
     width: 20%;
     height: 40%;
 }
 
 
+#noticia{
+    background-color: white;
+    width: 50%;
+    height: 65%;
+}
+
 #imagemNot1{
     transform: scale(30%, 30%) translate(15%, 0%);
+}
+#Pnot1{
+    height: 30%;
+    width: 69%;
+    transform: translate(-50%, 50%);
 }

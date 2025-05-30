@@ -62,8 +62,8 @@
           </div>
           <!-- campo a ser colocado no js -->
           <div class="campo">
-            <span>Sobrenome:</span>
-            <input id="sobrenome_input" type="text" placeholder="Seu sobrenome" />
+            <span>link foto de perfil:</span>
+            <input id="foto_input" type="text" placeholder="Sua foto de perfil" />
           </div>
                     <!-- campo a ser colocado no js -->
           <div class="doisCampos">
@@ -162,7 +162,7 @@
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
-    var sobrenomeVar = sobrenome_input.value;
+    var fotoVar = foto_input.value;
     var generoVar = genero_input.value;
     var dtNascVar = dtNasc_input.value;
     var emailVar = email_input.value;
@@ -174,7 +174,7 @@
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
-      sobrenomeVar == '' ||
+      fotoVar == '' ||
       generoVar == "" ||
       dtNascVar == "" ||
       emailVar == "" ||
@@ -203,7 +203,7 @@
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
-        sobreNomeServer: sobrenomeVar,
+        fotoServer: fotoVar,
         generoServer: generoVar,
         dtNascServer: dtNascVar,
         emailServer: emailVar,
