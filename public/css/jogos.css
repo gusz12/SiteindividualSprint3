@@ -30,7 +30,7 @@
 } 
 
 .iframe{   
-    transform: scale(230%, 230%) translate(0%, 30%)
+    transform: scale(290%, 370%) translate(0%, 35%);
 }
 #tinyRick{
     width: 70%;
@@ -42,10 +42,10 @@
 }
 #textoTB{
     color: aliceblue;
-    transform: translate(10%, -990%);
+    transform: translate(8%, -1015%);
 }
 #videoTB{
-    transform: translate(50%, -272%);
+    transform: translate(33%, -274%);
     width: 20%;
     height: 40%;
 }

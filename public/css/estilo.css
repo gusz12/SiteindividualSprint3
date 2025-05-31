@@ -602,7 +602,7 @@ input {
 
 
 /* ------------------------------------------------------------ */
-/* SIMULADOR */
+/* CIDADELA */
 
 .headerCidadela{
    height: var(--tamanho-header);
@@ -857,7 +857,7 @@ input {
   border-radius: 20px;
   width: 15%;
 }
-.caixaImagem p{
+.p{
   height: 30%;
   width: 69%;
   transform: translate(25%, 11%);
@@ -869,7 +869,14 @@ input {
   border-radius: 20px;
 }
 #pC{
+  height: 30%;
+  width: 69%;
   transform: translate(25%, -255%);
+}
+#Pnot1{
+  height: 30%;
+  width: 69%;
+  transform: translate(25%, -695%);
 }
 #ricks{
   border-radius: 20px;  
