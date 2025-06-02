@@ -20,25 +20,17 @@
     <!--Header-->
 
     <div class="header">
-        <div class="headerCidadela">
-            <div class="container">
+      <div class="container">
 
-                <ul class="navbar">
-                    <li class="agora">
-                        <a href="../index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="../simulador.html">Cidadela</a>
-                    </li>
-                    <li>
-                        <a href="../login.html">Login</a>
-                    </li>
-                    <li>
-                        <a href="../cadastro.html">Cadastro</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <ul class="navbar">
+          <li class="agora">
+            CIDADELA
+          </li>
+          <li>
+            <a href="../dashboard/cards.html">VOLTAR</a>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="login" id="paginaRick">
         <div class="jogo" id="rickJogo">
@@ -54,13 +46,47 @@
     </div>
     <!--footer inicio-->
     <div class="footerjogos">
-            <h4>
-                Feito com por Gustavo Menezes SPTech 2025 - Versão: 1.0.0<br>
-                link jogo: <a href="https://flborrelli.github.io/rick-and-morty-game/">jogo oficial</a>
-            </h4>
+        <h4>
+            Feito com por Gustavo Menezes SPTech 2025 - Versão: 1.0.0<br>
+            link jogo: <a href="https://flborrelli.github.io/rick-and-morty-game/">jogo oficial</a>
+        </h4>
     </div>
     <!--footer fim-->
 
 </body>
 
 </html>
+
+<script>
+
+    let tempoEmJogo = 0;
+    function atualizarTempo(){
+        tempoEmJogo++;
+        console.log(tempoEmJogo);
+    }setInterval(atualizarTempo, 1000);
+
+    function enviarTempo() {
+        const idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch("/BadTimeSimulator/registrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuario: idUsuario,
+                tempoBT: tempoBT
+            })
+        })
+            .then(res => res.text())
+            .then(msg => {
+                console.log(msg);
+            })
+            .catch(err => {
+                console.error("Erro ao enviar tempo:", err);
+            });
+    }
+
+    window.addEventListener("beforeunload", enviarTempo);
+
+</script>
