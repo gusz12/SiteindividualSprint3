@@ -25,8 +25,11 @@ function autenticar(req, res) {
                         // aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
                             // .then(resultadoAquarios) =>
                                 // if (resultadoAquarios.length > 0) {
+
+                                    //Esta funcão autentica os dados abaixo verificando se há usuários com os mesmos parametros
+                                    // envia para o model e faz o selec
                                     res.json({
-                                        id: resultadoAutenticar[0].id,
+                                        idUsuario: resultadoAutenticar[0].idUsuario,
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha
@@ -56,7 +59,7 @@ function autenticar(req, res) {
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
-    var foto = req.body.fotoVar;
+    var foto = req.body.fotoServer;
     var genero = req.body.generoServer;
     var dtNasc = req.body.dtNascServer;
     var email = req.body.emailServer;
@@ -68,7 +71,7 @@ function cadastrar(req, res) {
     // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
-    } else if(sobrenome == undefined){
+    } else if(foto == undefined){
         res.status(400).send("Seu sobrenome está undefined!");
     }else if(genero == undefined){
        res.status(400).send("Seu genero está undefined!"); 
