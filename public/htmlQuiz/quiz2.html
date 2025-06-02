@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GreenPortal | EasterEgg Jerry</title>
+
+    <script src="./js/sessao.js"></script>
+    <link rel="stylesheet" href="../css/jogos.css">
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <link rel="icon" href="../assets/images/Portal.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+
+<body onload="onloadEsconder()">
+
+    <!--Header-->
+
+    <div class="header">
+        <div class="headerCidadela">
+            <div class="container">
+
+                <ul class="navbar">
+                    <li class="agora">
+                        <a href="../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="../simulador.html">Cidadela</a>
+                    </li>
+                    <li>
+                        <a href="../login.html">Login</a>
+                    </li>
+                    <li>
+                        <a href="../cadastro.html">Cadastro</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="login">
+        <div id="pontuacaoEJogo">
+            <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
+
+            <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
+                <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
+                    <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
+                    <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
+                </div>
+                <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
+                    <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
+                        <span id="spanPontuacaoFinal"></span>
+                    </span>
+                    <span id="msgFinal" class="width-fit-content">0</span>
+                </div>
+            </div>
+
+            <div id="jogo" class="width-fit-content flex-colunar border-secondary">
+
+                <div id="infoQuestao" class="padding-8">
+                    <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
+                        questões.</span>
+                </div>
+
+                <!-- span adicionado para aparecer imagem -->
+                <span id="spanImagem">
+
+                </span>
+
+                <div id="perguntaDaQuestaoAtual" class="padding-8">
+                    <span id="spanQuestaoExibida" class="text-bold"></span>
+                </div>
+
+
+
+                <div id="infoAlternativas" class="padding-8">
+                    <span><em>Escolha uma opção dentre as abaixo:</em></span>
+                </div>
+                <div id="opcoes" class="flex-colunar padding-8">
+                    <span>
+                        <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+                        <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+                    </span>
+                    <span>
+                        <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+                        <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+                    </span>
+                    <span>
+                        <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+                        <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+                    </span>
+                    <span>
+                        <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+                        <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+                    </span>
+                </div>
+
+                <div id="botoes" class="flex-colunar padding-8">
+                    <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+                    <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
+                    <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
+                    <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--footer inicio-->
+    <div class="footerjogos">
+        <h4>
+            Feito com por Gustavo Menezes SPTech 2025 - Versão: 1.0.0<br>
+        </h4>
+    </div>
+    <!--footer fim-->
+
+</body>
+
+</html>
+<script>
+    const listaDeQuestoes = [
+
+
+        {
+            imagem: `<img id="imagemQuestao" src=""></img>`,
+            pergunta: "Qual o melhor amigo de Rick?",
+            alternativaA: "Morty",
+            pontuacaoA: 0,
+            alternativaB: "Jerry",
+            pontuacaoB: 5,
+            alternativaC: "Pessoa-Pássaro",
+            pontuacaoC: 10,
+            alternativaD: "MR.Butt",
+            pontuacaoD: 0
+        },
+
+        {
+            imagem: `<img id="imagemQuestao" src=""></img>`,
+            pergunta: "'Wubba Lubba...'?",
+            alternativaA: "Dub Dub",
+            pontuacaoA: 15,
+            alternativaB: "Daba Dubi",
+            pontuacaoB: 0,
+            alternativaC: "Lubbi Lubbi",
+            pontuacaoC: 5,
+            alternativaD: "Labbi Dabi",
+            pontuacaoD: 0
+        },
+
+        {
+            imagem: `<img id="imagemQuestao" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwlxZuGMqg8bSKN1AdcBTnouQqm2TRLVVnvA&s" ></img>`,
+            pergunta: "Jerry precisa de ajuda para fazer uma tacada de golf. Quem pode lhe ajudar?",
+            alternativaA: "Morty, que pega algum item de Rick que irá melhorar as qualidades de Jerry no golf.",
+            pontuacaoA: 0,
+            alternativaB: "Beth, sua mulher que sabe lidar com todos os defeitos de Jerry.",
+            pontuacaoB: 25,
+            alternativaC: "Mr.Meeseeks, um alienígena azul e uma das ferramentas de Rick.",
+            pontuacaoC: 5,
+            alternativaD: "Rick, o ser mais inteligente do universo.",
+            pontuacaoD: 0
+        },
+
+        // Nova questão para fechar 100 pontos
+        {
+            imagem: `<img id="imagemQuestao" src="https://static.wikia.nocookie.net/rickandmorty/images/6/6f/Beth_Smith.png" ></img>`,
+            pergunta: "Quem é a mãe de Summer e Morty?",
+            alternativaA: "Jessica",
+            pontuacaoA: 0,
+            alternativaB: "Beth",
+            pontuacaoB: 50,
+            alternativaC: "Tammy",
+            pontuacaoC: 5,
+            alternativaD: "Unity",
+            pontuacaoD: 0
+        }
+
+    ]
+
+    // variáveis globais    
+    let numeroDaQuestaoAtual = 0
+    let pontuacaoFinal = 0
+    let tentativaIncorreta = 0
+    let certas = 0
+    let erradas = 0
+    let quantidadeDeQuestoes = listaDeQuestoes.length
+    // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
+
+    function onloadEsconder() {
+        document.getElementById('pontuacao').style.display = "none"
+        document.getElementById('jogo').style.display = "none"
+    }
+
+    function iniciarQuiz() {
+        document.getElementById('pontuacao').style.display = "flex"
+        document.getElementById('jogo').style.display = "flex"
+        document.getElementById('btnIniciarQuiz').style.display = "none"
+
+        document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
+
+        preencherHTMLcomQuestaoAtual(0)
+
+        btnSubmeter.disabled = false
+        btnProx.disabled = true
+        // btnConcluir.disabled = true
+        btnTentarNovamente.disabled = true
+    }
+
+    function preencherHTMLcomQuestaoAtual(index) {
+        habilitarAlternativas(true)
+        const questaoAtual = listaDeQuestoes[index]
+        numeroDaQuestaoAtual = index
+        console.log("questaoAtual")
+        console.log(questaoAtual)
+
+        // span adicionado para insercão de imagens nas questões
+        document.getElementById("spanImagem").innerHTML = questaoAtual.imagem
+
+        document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = Number(index) + 1 // ajustando porque o index começa em 0
+        document.getElementById("spanQuestaoExibida").innerHTML = questaoAtual.pergunta;
+        document.getElementById("labelOpcaoUm").innerHTML = questaoAtual.alternativaA;
+        document.getElementById("labelOpcaoDois").innerHTML = questaoAtual.alternativaB;
+        document.getElementById("labelOpcaoTres").innerHTML = questaoAtual.alternativaC;
+        document.getElementById("labelOpcaoQuatro").innerHTML = questaoAtual.alternativaD;
+    }
+
+    function submeter() {
+        const options = document.getElementsByName("option"); // recupera alternativas no html
+
+        let hasChecked = false
+        for (let i = 0; i < options.length; i++) {
+            if (options[i].checked) {
+                hasChecked = true
+                break
+            }
+        }
+
+        if (!hasChecked) {
+            alert("Não há alternativas escolhidas. Escolha uma opção.")
+        } else {
+            btnSubmeter.disabled = true
+            btnProx.disabled = false
+
+            habilitarAlternativas(false)
+
+            checarResposta()
+        }
+    }
+
+    function habilitarAlternativas(trueOrFalse) {
+        let opcaoEscolhida = trueOrFalse ? false : true
+
+        primeiraOpcao.disabled = opcaoEscolhida
+        segundaOpcao.disabled = opcaoEscolhida
+        terceiraOpcao.disabled = opcaoEscolhida
+        quartaOpcao.disabled = opcaoEscolhida
+
+    }
+
+    function avancar() {
+        btnProx.disabled = true
+        btnSubmeter.disabled = false
+
+        desmarcarRadioButtons()
+
+        if (numeroDaQuestaoAtual < quantidadeDeQuestoes - 1) {
+            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
+        } else if (numeroDaQuestaoAtual == quantidadeDeQuestoes - 1) {
+            alert("Atenção... a próxima é a ultima questão!")
+            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
+        } else {
+            finalizarJogo()
+        }
+        limparCoresBackgroundOpcoes()
+    }
+
+    function tentarNovamente() {
+        // atualiza a página
+        window.location.reload()
+    }
+
+    function checarResposta() {
+        const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual] // questão atual
+        const options = document.getElementsByName("option"); // recupera alternativas no html
+        let pontuacaoMarcada = 0 // variável para armazenar a pontuação da alternativa marcada
+
+        options.forEach((option) => {
+            if (option.checked) {
+                // Descobre qual alternativa foi marcada e pega a pontuação
+                if (option.value === "alternativaA") pontuacaoMarcada = questaoAtual.pontuacaoA;
+                if (option.value === "alternativaB") pontuacaoMarcada = questaoAtual.pontuacaoB;
+                if (option.value === "alternativaC") pontuacaoMarcada = questaoAtual.pontuacaoC;
+                if (option.value === "alternativaD") pontuacaoMarcada = questaoAtual.pontuacaoD;
+            }
+        })
+
+        pontuacaoFinal += pontuacaoMarcada;
+        numeroDaQuestaoAtual++;
+        document.getElementById("spanPontuacaoFinal").innerHTML = pontuacaoFinal;
+    }
+
+    function limparCoresBackgroundOpcoes() {
+        const options = document.getElementsByName("option");
+        options.forEach((option) => {
+            document.getElementById(option.labels[0].id).classList.remove("text-danger-with-bg")
+            document.getElementById(option.labels[0].id).classList.remove("text-success-with-bg")
+        })
+    }
+
+    function desmarcarRadioButtons() {
+        const options = document.getElementsByName("option");
+        for (let i = 0; i < options.length; i++) {
+            options[i].checked = false;
+        }
+    }
+
+    function finalizarJogo() {
+        let textoParaMensagemFinal = null
+        let classComCoresParaMensagemFinal = null
+        const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
+
+        if (porcentagemFinalDeAcertos <= 0.3) {
+            textoParaMensagemFinal = "Parece que você não estudou..."
+            classComCoresParaMensagemFinal = "text-danger-with-bg"
+        }
+        else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
+            textoParaMensagemFinal = "Pode melhorar na próxima, hein!"
+            classComCoresParaMensagemFinal = "text-warning-with-bg"
+        }
+        else if (porcentagemFinalDeAcertos >= 0.9) {
+            textoParaMensagemFinal = "Uau, parabéns!"
+            classComCoresParaMensagemFinal = "text-success-with-bg"
+        }
+
+        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
+
+
+        document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
+        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
+        document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
+
+        document.getElementById('jogo').classList.add("text-new-gray")
+
+        btnProx.disabled = true
+        btnSubmeter.disabled = true
+        // btnConcluir.disabled = true
+        btnTentarNovamente.disabled = false
+
+    }
+
+    function finalizarJogo() {
+    let textoParaMensagemFinal = "";
+    let classComCoresParaMensagemFinal = "";
+
+    if (pontuacaoFinal <= 25) {
+        textoParaMensagemFinal = "Você não sobreviveria nem 1 minuto em Rick and Morty!";
+        classComCoresParaMensagemFinal = "text-danger-with-bg";
+    } else if (pontuacaoFinal <= 50) {
+        textoParaMensagemFinal = "Você sobreviveria por pouco tempo, mas seria divertido!";
+        classComCoresParaMensagemFinal = "text-warning-with-bg";
+    } else if (pontuacaoFinal <= 75) {
+        textoParaMensagemFinal = "Você se sairia bem, mas cuidado com as aventuras!";
+        classComCoresParaMensagemFinal = "text-info-with-bg";
+    } else {
+        textoParaMensagemFinal = "Você é praticamente um personagem principal, parabéns!";
+        classComCoresParaMensagemFinal = "text-success-with-bg";
+    }
+
+    textoParaMensagemFinal += "<br>Sua pontuação: " + pontuacaoFinal + " de 100 pontos.";
+
+    document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal;
+    document.getElementById('msgFinal').className = "width-fit-content " + classComCoresParaMensagemFinal;
+    document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal;
+
+    document.getElementById('jogo').classList.add("text-new-gray");
+
+    btnProx.disabled = true;
+    btnSubmeter.disabled = true;
+    btnTentarNovamente.disabled = false;
+}
+</script>

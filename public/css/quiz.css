@@ -1,0 +1,192 @@
+.login {
+    height: 84vh;
+}
+
+#pontuacaoEJogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 84vh;
+}
+
+/* ---------------------------------------- */
+/* Botão iniciar */
+#btnIniciarQuiz {
+    border: solid 2px #11D53C;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    width: 20%;
+    height: 10%;
+    font-size: 120%;
+}
+
+#btnIniciarQuiz:hover {
+    cursor: pointer;
+    border: solid 2px white;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    width: 20%;
+    height: 10%;
+    font-size: 120%;
+}
+
+#btnIniciarQuiz:active {
+    cursor: pointer;
+    border: solid 2px black;
+    background-color: white;
+    color: #11D53C;
+    border-radius: 20px;
+    width: 20%;
+    height: 10%;
+    font-size: 120%;
+}
+
+/* final estilização botão iniciar */
+/* ---------------------------------------- */
+/* Pontuação quiz */
+
+#pontuacao {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-self: flex-start;
+    border: #11D53C 2px solid;
+    color: white;
+    background-color: none;
+    width: 40%;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-left: 30%;
+
+}
+
+#pontuacaoDuranteJogo {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+}
+
+#pontuacaoFinalJogo {
+    margin-left: 2%;
+}
+
+/* ---------------------------------------- */
+/* Jogo */
+
+#jogo {
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 40%;
+    height: 80%;
+    background-color: black;
+    border: solid 2px #11D53C;
+    border-radius: 5px;
+    color: white;
+}
+
+#infoQuestao {
+    align-self: center;
+}
+#infoAlternativas{
+    margin-left: 12px;
+}
+#opcoes {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: start;
+    margin-left: 12px;
+    margin-top: 15px;
+    flex-direction: row;
+    color: white;
+}
+
+#perguntaDaQuestaoAtual {
+    margin-top: 90px;
+    justify-self: center;
+    align-self: center;
+    color: white;
+}
+
+#botoes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-evenly;
+    align-items: end;
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+
+
+/* Botão submeter resposta */
+#btnSubmeter{
+    border: #11D53C solid 2px;
+    color:white;
+    background-color: #11D53C;
+}
+#btnSubmeter:hover{
+    cursor: pointer;
+    border: white solid 2px;
+    color:white;
+    background-color: #11D53C;
+}
+#btnSubmeter:active{
+    cursor: pointer;
+    border: white solid 2px;
+    color:#11D53C;
+    background-color: white;
+}
+
+#btnProx{
+    border: #11D53C solid 2px;
+    color:white;
+    background-color: #11D53C;
+}
+#btnProx:hover{
+    cursor: pointer;
+    border: white solid 2px;
+    color:white;
+    background-color: #11D53C;
+}
+#btnProx:active{
+    cursor: pointer;
+    border: white solid 2px;
+    color:#11D53C;
+    background-color: white;
+}
+
+#btnTentarNovamente{
+    border: #11D53C solid 2px;
+    color:white;
+    background-color: #11D53C; 
+}
+#btnTentarNovamente:hover{
+    cursor: pointer;
+    border: white solid 2px;
+    color:white;
+    background-color: #11D53C;
+}
+#btnTentarNovamente:active{
+    cursor: pointer;
+    border: white solid 2px;
+    color:#11D53C;
+    background-color: white;
+}
+
+
+
+#spanImagem {
+    margin-top: 80px;
+    justify-self: center;
+    align-self: center;
+    transform: scale(150%);
+}
+
+#imagemQuestao {
+    border: #11D53C solid 2px;
+    border-radius: 5px;
+}
