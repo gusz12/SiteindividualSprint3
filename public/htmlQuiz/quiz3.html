@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -8,7 +9,7 @@
 
     <title>GreenPortal | EasterEgg Jerry</title>
 
-    <script src="./js/sessao.js"></script>
+    <script src="/public/js/sessao.js"></script>
     <link rel="stylesheet" href="../css/jogos.css">
     <link rel="stylesheet" href="../css/estilo.css">
     <link rel="stylesheet" href="../css/quiz.css">
@@ -255,8 +256,8 @@
 
         const options = document.getElementsByName("option"); // recupera alternativas no html
 
-        let alternativaCorreta = null // variável para armazenar a alternativa correta
-
+        let alternativaCorreta = 0 // variável para armazenar a alternativa correta
+        // ForEach == para cada 
         options.forEach((option) => {
             if (option.value === respostaQuestaoAtual) {
                 console.log("alternativaCorreta está no componente: " + alternativaCorreta)
@@ -331,6 +332,18 @@
         btnSubmeter.disabled = true
         // btnConcluir.disabled = true
         btnTentarNovamente.disabled = false
+
+
+    fetch("/quiz3/salvar", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+        fkUsuario: sessionStorage.ID_USUARIO, // nome igual ao do banco
+        fkQuiz: 3, // nome igual ao do banco
+        resultado: pontuacaoFinal // nome igual ao do banco
+    })
+})
+    .then(res => res.ok ? console.log("Resultado salvo!") : console.error("Erro ao salvar resultado"));
 
     }
 </script>

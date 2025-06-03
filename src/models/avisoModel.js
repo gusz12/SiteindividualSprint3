@@ -8,13 +8,13 @@ function listar() {
             a.titulo,
             a.descricao,
             a.fk_usuario,
-            u.id AS idUsuario,
+            u.idUsuario AS idUsuario,
             u.nome,
             u.email,
             u.senha
         FROM aviso a
-            INNER JOIN usuario u
-                ON a.fk_usuario = u.id;
+            INNER JOIN usuarios u
+                ON a.fk_usuario = u.idUsuario;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -28,13 +28,13 @@ function pesquisarDescricao(texto) {
             a.titulo,
             a.descricao,
             a.fk_usuario,
-            u.id AS idUsuario,
+            u.idUsuario AS idUsuario,
             u.nome,
             u.email,
             u.senha
         FROM aviso a
-            INNER JOIN usuario u
-                ON a.fk_usuario = u.id
+            INNER JOIN usuarios u
+                ON a.fk_usuario = u.idUsuario
         WHERE a.descricao LIKE '${texto}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -49,14 +49,14 @@ function listarPorUsuario(idUsuario) {
             a.titulo,
             a.descricao,
             a.fk_usuario,
-            u.id AS idUsuario,
+            u.idUsuario AS idUsuario,
             u.nome,
             u.email,
             u.senha
         FROM aviso a
-            INNER JOIN usuario u
-                ON a.fk_usuario = u.id
-        WHERE u.id = ${idUsuario};
+            INNER JOIN usuarios u
+                ON a.fk_usuario = u.idUsuario
+        WHERE u.idUsuario = ${idUsuario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
