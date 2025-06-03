@@ -26,7 +26,7 @@
 
         <ul class="navbar">
           <li class="agora">
-            CIDADELA
+           <a href="../dashboard/simulador.html"></a>
           </li>
           <li>
             <a href="../dashboard/cards.html">VOLTAR</a>
@@ -339,8 +339,9 @@
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
         fkUsuario: sessionStorage.ID_USUARIO, // nome igual ao do banco
-        fkQuiz: 3, // nome igual ao do banco
-        resultado: pontuacaoFinal // nome igual ao do banco
+        fkQuiz: 3,
+        resultado: pontuacaoFinal,
+        descricao: null
     })
 })
     .then(res => res.ok ? console.log("Resultado salvo!") : console.error("Erro ao salvar resultado"));

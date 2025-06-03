@@ -25,7 +25,7 @@
 
         <ul class="navbar">
           <li class="agora">
-            CIDADELA
+            <a href="../dashboard/simulador.html"></a>
           </li>
           <li>
             <a href="../dashboard/cards.html">VOLTAR</a>
@@ -345,24 +345,25 @@
     function finalizarJogo() {
     let textoParaMensagemFinal = "";
     let classComCoresParaMensagemFinal = "";
+    let resultadoPersonagem = "";
 
     if (pontuacaoFinal <= 25) {
-        textoParaMensagemFinal = "Você não sobreviveria nem 1 minuto em Rick and Morty!";
+        resultadoPersonagem = `"Você não sobreviveria nem 1 minuto em Rick and Morty!"`;
         classComCoresParaMensagemFinal = "text-danger-with-bg";
     } else if (pontuacaoFinal <= 50) {
-        textoParaMensagemFinal = "Você sobreviveria por pouco tempo, mas seria divertido!";
+        resultadoPersonagem = `"Você sobreviveria por pouco tempo, mas seria divertido!"`;
         classComCoresParaMensagemFinal = "text-warning-with-bg";
     } else if (pontuacaoFinal <= 75) {
-        textoParaMensagemFinal = "Você se sairia bem, mas cuidado com as aventuras!";
+        resultadoPersonagem = `"Você se sairia bem, mas cuidado com as aventuras!"`;
         classComCoresParaMensagemFinal = "text-info-with-bg";
     } else {
-        textoParaMensagemFinal = "Você é praticamente um personagem principal, parabéns!";
+        resultadoPersonagem = `"Você é praticamente um personagem principal, parabéns!"`;
         classComCoresParaMensagemFinal = "text-success-with-bg";
     }
 
     textoParaMensagemFinal += "<br>Sua pontuação: " + pontuacaoFinal + " de 100 pontos.";
 
-    document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal;
+    document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal + resultadoPersonagem;
     document.getElementById('msgFinal').className = "width-fit-content " + classComCoresParaMensagemFinal;
     document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal;
 
@@ -371,5 +372,19 @@
     btnProx.disabled = true;
     btnSubmeter.disabled = true;
     btnTentarNovamente.disabled = false;
-}
+
+        fetch("/quiz3/salvar", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+        fkUsuario: sessionStorage.ID_USUARIO, // nome igual ao do banco
+        fkQuiz: 2,
+        resultado: pontuacaoFinal,
+        descricao: resultadoPersonagem
+    })
+})
+    .then(res => res.ok ? console.log("Resultado salvo!") : console.error("Erro ao salvar resultado"));
+
+    }
+
 </script>

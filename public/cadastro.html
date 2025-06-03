@@ -172,13 +172,13 @@
     if (
       nomeVar == "" ||
       fotoVar == '' ||
-      generoVar == "" ||
+      generoVar == "#" ||
       dtNascVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      temporadaVar == "" ||
-      episodioVar == ""     
+      temporadaVar == "#" ||
+      episodioVar == "#"     
     ){
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -187,7 +187,16 @@
       finalizarAguardar();
       return false;
     } else {
-      setInterval(sumirMensagem, 5000);
+      setTimeout(sumirMensagem, 5000);
+    }
+
+
+    // Verificando se as senhas são iguais
+    if (senhaVar != confirmacaoSenhaVar) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "As senhas não coincidem!";
+      finalizarAguardar();
+      return false;
     }
 
     // Enviando o valor da nova input
@@ -221,7 +230,7 @@
 
           setTimeout(() => {
             window.location = "login.html";
-          }, "2000");
+          }, 2000);
 
           limparFormulario();
           finalizarAguardar();

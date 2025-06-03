@@ -1,9 +1,9 @@
 var database = require("../database/config");
 
-function salvarResultado(fkUsuario, fkQuiz, resultado) {
+function salvarResultado(fkUsuario, fkQuiz, resultado, descricao) {
     var instrucao = `
-        INSERT INTO usuarios_quizzes (fkUsuario, fkQuiz, resultado)
-        VALUES (${fkUsuario}, '${fkQuiz}', ${resultado});
+        INSERT INTO usuarios_quizzes (fkUsuario, fkQuiz, resultado, descricao)
+        VALUES (${fkUsuario}, ${fkQuiz}, ${resultado}, ${descricao});
     `;
     return database.executar(instrucao);
 }
