@@ -9,3 +9,5 @@ function salvarResultado(fkUsuario, fkJogo, pontos) {
 }
 
 module.exports = { salvarResultado };
+
+

@@ -140,6 +140,9 @@ body {
 }
 
 .dash {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 80%;
   position: relative;
   top: 0;
@@ -476,4 +479,12 @@ canvas {
   padding: 10px 15px;
   margin-bottom: 100px;
   cursor: pointer;
+}
+
+/* -------------------------------------------- */
+/* SEU PERFIL */
+#abaUsuario{
+  width: 50%;
+  height: 70%;
+  background-color: #11D53C;
 }

@@ -21,7 +21,8 @@ var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
 var quiz3Router = require("./src/routes/quiz3");
 var NoticiaRouter = require("./src/routes/Noticia");
-var jogosRouter = require("./src/routes/jogos")
+var jogosRouter = require("./src/routes/jogos");
+var dashRouter = require("./src/routes/dash");
 // var aquariosRouter = require("./src/routes/aquarios");
 // var empresasRouter = require("./src/routes/empresas");
 
@@ -37,7 +38,8 @@ app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
 app.use("/quiz3", quiz3Router);
 app.use("/Noticia", NoticiaRouter);
-app.use("/jogos", jogosRouter)
+app.use("/jogos", jogosRouter);
+app.use("/dash", dashRouter);
 // app.use("/aquarios", aquariosRouter);
 // app.use("/empresas", empresasRouter);
 

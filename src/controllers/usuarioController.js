@@ -27,12 +27,13 @@ function autenticar(req, res) {
                                 // if (resultadoAquarios.length > 0) {
 
                                     //Esta funcão autentica os dados abaixo verificando se há usuários com os mesmos parametros
-                                    // envia para o model e faz o selec
+                                    // envia para o model e faz o select
                                     res.json({
                                         idUsuario: resultadoAutenticar[0].idUsuario,
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha
+                                        senha: resultadoAutenticar[0].senha,
+                                        foto: resultadoAutenticar[0].foto
                                         // aquarios: resultadoAquarios
                                     });
                                 // } else {
