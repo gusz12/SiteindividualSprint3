@@ -37,13 +37,16 @@
             <div class="instrucao">
                 <h1>Rick e Morty necessitam de sua ajuda para cantar! Ajude Rick!</h1>
                 <p>Use as setas para realizar os passos de dança!</p>
-            </div>
+                <button id="btnIniciar" onclick="coantagem()" style="width: auto; height: auto;">Inicializar pontuação</button>
+                <span id="pontuacao">Aperte este botão apenas quando Inicializar o jogo</span>
+              </div>
             <iframe class="iframe" src="https://fnf.run3.io/rick-sanchez-rick-morty/1/" frameborder="1"></iframe>
             <div class="instrucao">
                 <p>Aperte em Home para voltar para aba principal</p>
             </div>
             
         </div>
+        <button id="btnIniciar" onclick="enviarTempo()" style="width: auto; height: auto; transform: translate(512%, 0%);">Enviar Pontuação</button>
     </div>
     <!--footer inicio-->
     <div class="footerjogos">
@@ -57,3 +60,51 @@
 </body>
 
 </html>
+<script>
+
+    let tempoEmJogo = 0;
+    let intervalo = 0
+    function coantagem(){
+        if(intervalo == 0){
+            intervalo = setInterval(atualizarTempo, 1000);
+        }
+    }
+
+
+    function atualizarTempo(){
+        tempoEmJogo++;
+        console.log(tempoEmJogo);
+        document.getElementById('pontuacao').innerHTML = `Sua pontuação: ${tempoEmJogo}`
+    }
+    
+
+    function enviarTempo() {
+        // parar contagem
+        if(intervalo != 0){
+            clearInterval(intervalo);
+            intervalo = 0;
+        }
+        fetch("/jogos/salvar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkUsuario: sessionStorage.ID_USUARIO,
+                fkJogo: 3,
+                pontos: tempoEmJogo
+            })
+        })
+            .then(res => res.text())
+            .then(msg => {
+                console.log(msg);
+            })
+            .catch(err => {
+                console.error("Erro ao enviar tempo:", err);
+            });
+            tempoEmJogo = 0;
+            document.getElementById('pontuacao').innerHTML = `Sua pontuação: ${tempoEmJogo}`
+    }
+
+
+</script>

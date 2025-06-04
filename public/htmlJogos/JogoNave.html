@@ -37,12 +37,15 @@
             <div class="instrucao">
                 <h1>Houve um caos na cidadela e Morty's se rebeleram</h1>
                 <p>Use as setas para se mover e espaço para atirar!</p>
+                <button id="btnIniciar" onclick="coantagem()" style="width: auto; height: auto;">Inicializar pontuação</button>
+                <span id="pontuacao">Aperte este botão apenas quando Inicializar o jogo</span>
             </div>
             <iframe id="tinyRick" src="https://flborrelli.github.io/rick-and-morty-game/" frameborder="1"></iframe>
             <div class="instrucao">
                 <p>Aperte em Home para voltar para aba principal</p>
             </div>
         </div>
+        <button id="btnIniciar" onclick="enviarTempo()" style="width: auto; height: auto; transform: translate(512%, 0%);">Enviar Pontuação</button>
     </div>
     <!--footer inicio-->
     <div class="footerjogos">
@@ -60,22 +63,36 @@
 <script>
 
     let tempoEmJogo = 0;
+    let intervalo = 0
+    function coantagem(){
+        if(intervalo == 0){
+            intervalo = setInterval(atualizarTempo, 1000);
+        }
+    }
+
+
     function atualizarTempo(){
         tempoEmJogo++;
         console.log(tempoEmJogo);
-    }setInterval(atualizarTempo, 1000);
+        document.getElementById('pontuacao').innerHTML = `Sua pontuação: ${tempoEmJogo}`
+    }
+    
 
     function enviarTempo() {
-        const idUsuario = sessionStorage.ID_USUARIO;
-
-        fetch("/BadTimeSimulator/registrar", {
+        // parar contagem
+        if(intervalo != 0){
+            clearInterval(intervalo);
+            intervalo = 0;
+        }
+        fetch("/jogos/salvar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                idUsuario: idUsuario,
-                tempoBT: tempoBT
+                fkUsuario: sessionStorage.ID_USUARIO,
+                fkJogo: 2,
+                pontos: tempoEmJogo
             })
         })
             .then(res => res.text())
@@ -85,8 +102,9 @@
             .catch(err => {
                 console.error("Erro ao enviar tempo:", err);
             });
+            tempoEmJogo = 0;
+            document.getElementById('pontuacao').innerHTML = `Sua pontuação: ${tempoEmJogo}`
     }
 
-    window.addEventListener("beforeunload", enviarTempo);
 
 </script>
