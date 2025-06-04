@@ -1,7 +1,6 @@
 create database GreenPortal;
 use GreenPortal;
 
-
 -- ----------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Criação de tabelas principais
@@ -17,18 +16,29 @@ senha varchar(80) not null,
 temporadaFavorita int,
 episodioFavorito int
 );
-
+select * from GreenPortal.usuarios;
 
 create table jogos(
 idJogo int primary key auto_increment,
 nome varchar(40) not null,
 descricao varchar(70) not null
 );
+insert into jogos(nome, descricao)
+values
+('jogo1', 'TwoBrothers'),
+('jogo2', 'Rick vs Morty'),
+('jogo3', 'Rick canta com você!');
 
 create table quizzes(
 idQuiz int primary key auto_increment,
 nome varchar(45) not null
 );
+
+insert into quizzes(nome)
+values
+('quiz1'),
+('quiz2'),
+('quiz3');
 
 create table noticias(
 idNoticia int primary key auto_increment,
@@ -42,7 +52,6 @@ create table aviso(
 	fk_usuario INT,
 	FOREIGN KEY (fk_usuario) REFERENCES usuarios(idUsuario)
 );
-select * from GreenPortal.usuarios;
 -- ----------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Conexões entre tabelas, relação de muitos para muitos
@@ -52,7 +61,7 @@ create table jogos_usuarios(
 fkUsuario int not null,
 fkJogo int not null,
 pontuacaoObitida int not null,
-primary key(fkJogo, fkUsuario),
+datahora datetime,
 foreign key (fkJogo) references jogos(idJogo),
 foreign key (fkUsuario) references usuarios(idUsuario)
 );
@@ -61,8 +70,9 @@ foreign key (fkUsuario) references usuarios(idUsuario)
 create table usuarios_quizzes(
 fkUsuario int not null,
 fkQuiz int not null,
-resultado varchar(40) not null,
-primary key(fkUsuario, fkQuiz),
+resultado int not null,
+descricao varchar(100),
+datahora datetime,
 foreign key (fkUsuario) references usuarios(idUsuario),
 foreign key (fkQuiz) references quizzes(idQuiz)
 );
@@ -71,10 +81,10 @@ foreign key (fkQuiz) references quizzes(idQuiz)
 create table usuario_noticias(
 fkUsuario int not null,
 fkNoticia int not null,
-tempoLeitura datetime not null,
-primary key(fkUsuario, fkNoticia),
+datahora datetime,
 foreign key (fkUsuario) references usuarios(idUsuario),
 foreign key (fkNoticia) references noticias(idNoticia)
 );
-use GreenPortal;
-select * from usuarios;
+
+
+ 

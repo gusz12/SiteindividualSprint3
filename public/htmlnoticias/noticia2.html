@@ -57,3 +57,21 @@
 </body>
 
 </html>
+<script>
+
+
+
+
+         fetch("/Noticia/salvar", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+        fkUsuario: sessionStorage.ID_USUARIO, // nome igual ao do banco
+        fkNoticia: 2,
+
+    })
+})
+    .then(res => res.ok ? console.log("Resultado salvo!") : console.error("Erro ao salvar resultado"));
+
+
+</script>
