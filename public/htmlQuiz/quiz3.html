@@ -341,7 +341,7 @@
         fkUsuario: sessionStorage.ID_USUARIO, // nome igual ao do banco
         fkQuiz: 3,
         resultado: pontuacaoFinal,
-        descricao: null
+        descricao: 0
     })
 })
     .then(res => res.ok ? console.log("Resultado salvo!") : console.error("Erro ao salvar resultado"));

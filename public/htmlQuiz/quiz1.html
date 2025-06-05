@@ -304,62 +304,31 @@
         }
     }
 
-    // function finalizarJogo() {
-    //     let textoParaMensagemFinal = null
-    //     let classComCoresParaMensagemFinal = null
-    //     const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
-
-    //     if (porcentagemFinalDeAcertos <= 0.3) {
-    //         textoParaMensagemFinal = "Parece que você não estudou..."
-    //         classComCoresParaMensagemFinal = "text-danger-with-bg"
-    //     }
-    //     else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
-    //         textoParaMensagemFinal = "Pode melhorar na próxima, hein!"
-    //         classComCoresParaMensagemFinal = "text-warning-with-bg"
-    //     }
-    //     else if (porcentagemFinalDeAcertos >= 0.9) {
-    //         textoParaMensagemFinal = "Uau, parabéns!"
-    //         classComCoresParaMensagemFinal = "text-success-with-bg"
-    //     }
-
-    //     textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
-
-
-    //     document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
-    //     document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
-    //     document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
-
-    //     document.getElementById('jogo').classList.add("text-new-gray")
-
-    //     btnProx.disabled = true
-    //     btnSubmeter.disabled = true
-    //     // btnConcluir.disabled = true
-    //     btnTentarNovamente.disabled = false
-
-    // }
 
     function finalizarJogo() {
     let textoParaMensagemFinal = "";
     let classComCoresParaMensagemFinal = "";
     let resultadoPersonagem = "";
+    let textoFInal = '';
 
     if (pontuacaoFinal <= 25) {
         resultadoPersonagem = `"Desintegrado em 5 minutos"`;
-        classComCoresParaMensagemFinal = "text-danger-with-bg";
     } else if (pontuacaoFinal <= 50) {
-        resultadoPersonagem = `"Você certamente seria um Jerry"`;
-        classComCoresParaMensagemFinal = "text-warning-with-bg";
+        texto
+        resultadoPersonagem = `"Jerry"`;
+        textoFInal = `, você é alguém que pode ajudar mas com sérios riscos de de se perder durante a aventura.`;
+
     } else if (pontuacaoFinal <= 75) {
-        resultadoPersonagem = `"Um Morty clássico"`;
-        classComCoresParaMensagemFinal = "text-info-with-bg";
+        resultadoPersonagem = `"Morty"`;
+        textoFInal = ', você se daria bem em uma aventura com Rick!'
     } else {
-        resultadoPersonagem = `"Você se daria bem, tipo uma Beth espacial ou o próprio Rick"`;
-        classComCoresParaMensagemFinal = "text-success-with-bg";
+        resultadoPersonagem = `"Aniquilação total"`;
+        textoFInal = ', você com certeza saberia lidar com as adversidades e problemas das aventuras!'
     }
 
     textoParaMensagemFinal += "<br>Sua pontuação: " + pontuacaoFinal + " de 100 pontos.";
 
-    document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal + resultadoPersonagem;
+    document.getElementById('msgFinal').innerHTML = `${textoParaMensagemFinal} <br> Resultado: ${resultadoPersonagem}${textoFInal}`;
     document.getElementById('msgFinal').className = "width-fit-content " + classComCoresParaMensagemFinal;
     document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal;
 

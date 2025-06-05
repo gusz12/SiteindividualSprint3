@@ -69,8 +69,29 @@
         </div>
 
         <div class="dash">
-            <div id="graficoDireita">
-
+            <div id="graficosQuiz"><span id="titulo">Quizzes:</span>
+                <!-- Elemento canvas onde o gráfico de barra será desenhado -->
+                 <div id="Q1" class="gQuiz"><span>Quanto tempo você sobreviveria em um episódio de Rick and Morty?</span>
+                <canvas id="barra"></canvas>
+                </div>
+                <div id="Q2" class="gQuiz"><span>Veja com qual Rick da Cidadela você mais se parece!</span>
+                <canvas id="barra2"></canvas>
+                </div>
+                <div id="Q3" class="gQuiz"><span>Quanto você sabe de Rick and Morty? Teste suas capacidades!</span>
+                <canvas id="barra3"></canvas>
+                </div>
+            </div>
+            <div id="graficosJogos"><span id="titulo">Jogos:</span>
+                <!-- Elemento canvas onde o gráfico de barra será desenhado -->
+                 <div id="J1" class="gJogos"><span>TwoBrothers</span>
+                <canvas id="jogo1"></canvas>
+                </div>
+                <div id="J2" class="gJogos"><span>Rick vs Morty</span>
+                <canvas id="jogo2"></canvas>
+                </div>
+                <div id="J3" class="gJogos"><span>RickSing</span>
+                <canvas id="jogo3"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -83,5 +104,403 @@
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
+        // Identificando para o código o que o fkUsuario
+        var fkUsuario = sessionStorage.ID_USUARIO
+
+
+
  
+
+        // Para funcionar tenho que identificar para o código o que é a variável fkUsuario
+        fetch(`/dash/exibirResultadoQuiz1/${fkUsuario}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", resposta);
+
+                    
+                    // pegando os dados obtidos para plotar no gráfico
+                    var dados = resposta
+                    
+                    // Coloco a funcao dentro do fetch, tirando o problema de declarar a variavel 
+                    // dados dentro do fetch e  a funcao agindo fora, ocorrendo em uma não incializacão  
+                    plotarGraficoBarra1(dados);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                Q1.innerHTML = `<span id="EnviarErro">Nenhum dado encontrado! Vá para o quiz e volte!</span>`;
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    
+
+// -------------------------------------------------------------------------------------------
+
+        fetch(`/dash/exibirResultadoQuiz2/${fkUsuario}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", resposta);
+
+                    
+                    // pegando os dados obtidos para plotar no gráfico
+                    var dados = resposta
+                    
+                    // Coloco a funcao dentro do fetch, tirando o problema de declarar a variavel 
+                    // dados dentro do fetch e  a funcao agindo fora, ocorrendo em uma não incializacão  
+                    plotarGraficoBarra2(dados);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                Q2.innerHTML = `<span id="EnviarErro">Nenhum dado encontrado! Vá para o quiz e volte!</span>`;
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+// -------------------------------------------------------------------------------------------
+
+        fetch(`/dash/exibirResultadoQuiz3/${fkUsuario}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = `<span>Nenhum dado encontrado! Vá para o quiz e volte!</span>`;
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", resposta);
+
+
+                    // pegando os dados obtidos para plotar no gráfico
+                    var dados = resposta
+                    
+                    // Coloco a funcao dentro do fetch, tirando o problema de declarar a variavel 
+                    // dados dentro do fetch e  a funcao agindo fora, ocorrendo em uma não incializacão  
+                    plotarGraficoBarra3(dados);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                Q3.innerHTML = `<span id="EnviarErro">Nenhum dado encontrado! Vá para o quiz e volte!</span>`;
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+
+
+// Chamando a função para plotar o gráfico de barra com os dados
+
+
+// Função para plotar o gráfico de barra
+function plotarGraficoBarra1(dados){
+
+  var pontos = [];
+  var DataHora = [];
+
+  // Preenchendo os arrays com os dados
+  for(var i = 0; i < dados.length; i++){
+    pontos.push(dados[i].resultado);
+    DataHora.push(dados[i].datahora);
+  }
+
+  // Capturando o elemento canvas pelo id 
+  var ctx = document.getElementById('barra').getContext('2d');
+  // Criando o gráfico de barra usando o Chart.js
+  var myChart = new Chart(ctx, {
+      type: 'bar', // Tipo de gráfico: barra
+      data: { // Dados para o gráfico
+          labels: DataHora, // Rótulos no eixo X
+          datasets: [{
+              label: 'Acertos', // Nome do conjunto de dados
+              data: pontos, // Dados dos votos
+              backgroundColor: [
+                  'rgba(0, 178, 0, 0.7)', // Cor de fundo das barras
+              ],
+              borderColor: [
+                  'rgba(0, 178, 0, 0.7)', // Cor da borda das barras
+              ],
+              borderWidth: 1 // Largura da borda das barras
+          }]
+      },
+  });
+}
+
+function plotarGraficoBarra2(dados){
+
+  var pontos = [];
+  var DataHora = [];
+
+  // Preenchendo os arrays com os dados
+  for(var i = 0; i < dados.length; i++){
+    pontos.push(dados[i].resultado);
+    DataHora.push(dados[i].datahora);
+  }
+
+  // Capturando o elemento canvas pelo id 
+  var ctx = document.getElementById('barra2').getContext('2d');
+  // Criando o gráfico de barra usando o Chart.js
+  var myChart = new Chart(ctx, {
+      type: 'bar', // Tipo de gráfico: barra
+      data: { // Dados para o gráfico
+          labels: DataHora, // Rótulos no eixo X
+          datasets: [{
+              label: 'Acertos', // Nome do conjunto de dados
+              data: pontos, // Dados dos votos
+              backgroundColor: [
+                  'rgba(0, 178, 0, 0.7)', // Cor de fundo das barras
+              ],
+              borderColor: [
+                  'rgba(0, 178, 0, 0.7)', // Cor da borda das barras
+              ],
+              borderWidth: 1 // Largura da borda das barras
+          }]
+      },
+  });
+}
+
+function plotarGraficoBarra3(dados){
+
+  var pontos = [];
+  var DataHora = [];
+
+  // Preenchendo os arrays com os dados
+  for(var i = 0; i < dados.length; i++){
+    pontos.push(dados[i].resultado);
+    DataHora.push(dados[i].datahora);
+  }
+
+  // Capturando o elemento canvas pelo id 
+  var ctx = document.getElementById('barra3').getContext('2d');
+  // Criando o gráfico de barra usando o Chart.js
+  var myChart = new Chart(ctx, {
+      type: 'bar', // Tipo de gráfico: barra
+      data: { // Dados para o gráfico
+          labels: DataHora, // Rótulos no eixo X
+          datasets: [{
+              label: 'Acertos', // Nome do conjunto de dados
+              data: pontos, // Dados dos votos
+              backgroundColor: [
+                  'rgba(0, 178, 0, 0.7)', // Cor de fundo das barras
+              ],
+              borderColor: [
+                  'rgba(0, 178, 0, 0.7)', // Cor da borda das barras
+              ],
+              borderWidth: 1 // Largura da borda das barras
+          }]
+      },
+  });
+}
+
+// -------------------------------------------------------------------------------------------
+// Jogos
+        fetch(`/dash/exibirResultadoJogo1/${fkUsuario}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", resposta);
+
+
+                    // pegando os dados obtidos para plotar no gráfico
+                    var dados = resposta
+                    
+                    // Coloco a funcao dentro do fetch, tirando o problema de declarar a variavel 
+                    // dados dentro do fetch e  a funcao agindo fora, ocorrendo em uma não incializacão  
+                    plotarGraficojogo1(dados);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                J1.innerHTML = `<span id="EnviarErro">Nenhum dado encontrado! Vá para o jogo e volte!</span>`;
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+
+
+            fetch(`/dash/exibirResultadoJogo2/${fkUsuario}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", resposta);
+
+
+                    // pegando os dados obtidos para plotar no gráfico
+                    var dados = resposta
+                    
+                    // Coloco a funcao dentro do fetch, tirando o problema de declarar a variavel 
+                    // dados dentro do fetch e  a funcao agindo fora, ocorrendo em uma não incializacão  
+                    plotarGraficojogo2(dados);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                J2.innerHTML = `<span id="EnviarErro">Nenhum dado encontrado! Vá para o jogo e volte!</span>`;
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+
+            fetch(`/dash/exibirResultadoJogo3/${fkUsuario}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", resposta);
+
+
+                    // pegando os dados obtidos para plotar no gráfico
+                    var dados = resposta
+                    
+                    // Coloco a funcao dentro do fetch, tirando o problema de declarar a variavel 
+                    // dados dentro do fetch e  a funcao agindo fora, ocorrendo em uma não incializacão  
+                    plotarGraficojogo3(dados);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                J3.innerHTML = `<span id="EnviarErro">Nenhum dado encontrado! Vá para o jogo e volte!</span>`;
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+
+// Função para plotar o gráfico de barra
+function plotarGraficojogo1(dados){
+
+  var pontos = [];
+  var DataHora = [];
+
+  // Preenchendo os arrays com os dados
+  for(var i = 0; i < dados.length; i++){
+    pontos.push(dados[i].pontuacaoObitida);
+    DataHora.push(dados[i].datahora);
+  }
+
+  // Capturando o elemento canvas pelo id 
+  var ctx = document.getElementById('jogo1').getContext('2d');
+  // Criando o gráfico de barra usando o Chart.js
+  var myChart = new Chart(ctx, {
+      type: 'bar', // Tipo de gráfico: barra
+      data: { // Dados para o gráfico
+          labels: DataHora, // Rótulos no eixo X
+          datasets: [{
+              label: 'Pontos Obtidos', // Nome do conjunto de dados
+              data: pontos, // Dados dos votos
+              backgroundColor: [
+                  '#42a5f5', // Cor de fundo das barras
+              ],
+              borderColor: [
+                  '#42a5f5', // Cor da borda das barras
+              ],
+              borderWidth: 1 // Largura da borda das barras
+          }]
+      },
+  });
+}
+
+// Função para plotar o gráfico de barra
+function plotarGraficojogo2(dados){
+
+  var pontos = [];
+  var DataHora = [];
+
+  // Preenchendo os arrays com os dados
+  for(var i = 0; i < dados.length; i++){
+    pontos.push(dados[i].pontuacaoObitida);
+    DataHora.push(dados[i].datahora);
+  }
+
+  // Capturando o elemento canvas pelo id 
+  var ctx = document.getElementById('jogo2').getContext('2d');
+  // Criando o gráfico de barra usando o Chart.js
+  var myChart = new Chart(ctx, {
+      type: 'bar', // Tipo de gráfico: barra
+      data: { // Dados para o gráfico
+          labels: DataHora, // Rótulos no eixo X
+          datasets: [{
+              label: 'Pontos Obtidos', // Nome do conjunto de dados
+              data: pontos, // Dados dos votos
+              backgroundColor: [
+                  '#42a5f5', // Cor de fundo das barras
+              ],
+              borderColor: [
+                  '#42a5f5', // Cor da borda das barras
+              ],
+              borderWidth: 1 // Largura da borda das barras
+          }]
+      },
+  });
+}
+
+// Função para plotar o gráfico de barra
+function plotarGraficojogo3(dados){
+
+  var pontos = [];
+  var DataHora = [];
+
+  // Preenchendo os arrays com os dados
+  for(var i = 0; i < dados.length; i++){
+    pontos.push(dados[i].pontuacaoObitida);
+    DataHora.push(dados[i].datahora);
+  }
+
+  // Capturando o elemento canvas pelo id 
+  var ctx = document.getElementById('jogo3').getContext('2d');
+  // Criando o gráfico de barra usando o Chart.js
+  var myChart = new Chart(ctx, {
+      type: 'bar', // Tipo de gráfico: barra
+      data: { // Dados para o gráfico
+          labels: DataHora, // Rótulos no eixo X
+          datasets: [{
+              label: 'Pontos Obtidos', // Nome do conjunto de dados
+              data: pontos, // Dados dos votos
+              backgroundColor: [
+                  '#42a5f5', // Cor de fundo das barras
+              ],
+              borderColor: [
+                  '#42a5f5', // Cor da borda das barras
+              ],
+              borderWidth: 1 // Largura da borda das barras
+          }]
+      },
+  });
+}
 </script>
