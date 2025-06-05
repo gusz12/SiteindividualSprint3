@@ -10,7 +10,7 @@ router.get("/exibirResultadoJogo1/:fkUsuario", dashController.exibirResultadoJog
 router.get("/exibirResultadoJogo2/:fkUsuario", dashController.exibirResultadoJogo2);
 router.get("/exibirResultadoJogo3/:fkUsuario", dashController.exibirResultadoJogo3);
 
-router.get("exibirTempJogadores/:fkUsuario", dashController.exibirTempJogadores);
-router.get("exibirEpJogadores/:fkUsuario", dashController.exibirEpJogadores);
+router.get("/exibirTempJogadores", dashController.exibirTempJogadores);
+router.get("/exibirEpJogadores", dashController.exibirEpJogadores);
 
 module.exports = router;

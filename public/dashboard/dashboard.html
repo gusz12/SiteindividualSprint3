@@ -93,6 +93,13 @@
                 <canvas id="jogo3"></canvas>
                 </div>
             </div>
+            <div id="jogadores">
+                <div id="temporadas">
+                    <span id="titleDash">Temporadas mais votadas</span>
+                    <canvas id="temp"> </canvas>
+                    
+                </div>
+            </div>
         </div>
     </div>
 
@@ -503,4 +510,69 @@ function plotarGraficojogo3(dados){
       },
   });
 }
+
+            fetch(`/dash/exibirTempJogadores`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", resposta);
+
+
+                    // pegando os dados obtidos para plotar no gráfico
+                    var dados = resposta
+                    
+                    // Coloco a funcao dentro do fetch, tirando o problema de declarar a variavel 
+                    // dados dentro do fetch e  a funcao agindo fora, ocorrendo em uma não incializacão  
+                    exibirTempJogadores(dados);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                J3.innerHTML = `<span id="EnviarErro">Nenhum dado encontrado! Vá para o jogo e volte!</span>`;
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    // Função para plotar o gráfico de barra
+function exibirTempJogadores(dados){
+
+  var pontos = [];
+//   var DataHora = [];
+
+  // Preenchendo os arrays com os dados
+  for(var i = 0; i < dados.length; i++){
+    pontos.push(dados[i].temporadaFavorita);
+    // DataHora.push(dados[i].datahora);
+  }
+
+  // Capturando o elemento canvas pelo id 
+  var ctx = document.getElementById('temp').getContext('2d');
+  // Criando o gráfico de barra usando o Chart.js
+  var myChart = new Chart(ctx, {
+      type: 'doughnut', // Tipo de gráfico: barra
+      data: { // Dados para o gráfico
+        //   labels: DataHora, // Rótulos no eixo X
+          datasets: [{
+              label: 'Pontos Obtidos', // Nome do conjunto de dados
+              data: pontos, // Dados dos votos
+              backgroundColor: [
+                  '#42a5f5', // Cor de fundo das barras
+              ],
+              borderColor: [
+                  '#42a5f5', // Cor da borda das barras
+              ],
+              borderWidth: 1 // Largura da borda das barras
+          }]
+      },
+  });
+}
+
+
 </script>

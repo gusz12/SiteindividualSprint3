@@ -72,12 +72,17 @@ function exibirResultadoJogo3(fkUsuario) {
 
 
 
-function exibirTempJogadores(fkUsuario) {
+function exibirTempJogadores() {
     var instrucao = `
-    select * from jogos_usuarios ju
-    inner join usuarios u
-    on u.idUsuario = ju.fkUsuario
-    where u.idUsuario = ${fkUsuario};
+    select 
+    temporadaFavorita,
+    count(*) as quantidade
+    from 
+        usuarios
+    group by 
+        temporadaFavorita
+    order by 
+        quantidade desc limit 3;
     `;
     
     return database.executar(instrucao);

@@ -348,7 +348,7 @@ body {
 
 canvas {
   width: 100% !important;
-  height: 100% !important;
+  height: 90% !important;
 }
 
 /* PAGINA DOS GRÁFICOS 2023 */
@@ -545,4 +545,22 @@ canvas {
 }
 
 /* ------------------------------- */
-/* NOTICIAS */
+/* JOGADORES */
+#jogadores{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  color: white;
+}
+
+#temporadas{
+    width: 32%;
+    height: 90%;
+    border: #11D53C 2PX solid;
+    border-radius: 20px;
+    margin-left: 45px;
+    margin-top: 85px;
+}
+#titleDash{
+  margin-left: 15px;
+}
