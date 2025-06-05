@@ -63,6 +63,7 @@
         </div>
 
         <div class="dash">
+            <span id="mensagemInicio" >OBRIGADO POR ENTRAR NESTA AVENTURA <br> PERFIL:</span>
            <div id="abaUsuario">
 
             </div>
@@ -76,6 +77,8 @@
 <script>
      
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    let email = sessionStorage.EMAIL_USUARIO;
+    let nome = sessionStorage.NOME_USUARIO;
     var foto = sessionStorage.FOTO; 
 
     function nomeUsuario(){
@@ -85,12 +88,14 @@
 function exibirFotoPerfil() {
     if (sessionStorage.FOTO) {
         document.getElementById("abaUsuario").innerHTML = `
-            <img src="${sessionStorage.FOTO}" alt="Foto de perfil" style="width:100px; height:100px; border-radius:50%;">
+            <img src="${sessionStorage.FOTO}" alt="Foto de perfil" style="width:100px; height:100px; border-radius:50%; margin-left: 42%; margin-top:20px"><br>
+            <span id="nomeUser" >Nome: ${nome}</span><br>
+            <span id="emailUser">Email: ${email}</span>
         `;
     } else {
         document.getElementById("abaUsuario").innerHTML = `
 
-            <img src="../assets/images/Portal.png" alt="Foto padrão" style="width:100px; height:100px; border-radius:50%;">
+            <img src="../assets/images/Portal.png" alt="Foto padrão" style="width:100px; height:100px; border-radius:50%; margin-left: 42%; margin-top:20px">
         
         `;
     }

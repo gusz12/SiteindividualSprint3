@@ -483,13 +483,22 @@ canvas {
 /* -------------------------------------------- */
 /* SEU PERFIL */
 #abaUsuario{
-  width: 50%;
-  height: 70%;
-  background-color: #11D53C;
+  width: 40%;
+  height: 32%;
+  border-radius: 20px;
+  border: 2px solid #11D53C;
+  background-color: #02290a;
   align-self: center;
   justify-self: center;
 }
-
+#mensagemInicio{
+  color: white;
+  font-size: 350%;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  align-self: center;
+  justify-self: center;
+}
 
 /* -------------------------------------------- */
 /* SEUS RESULTADOS*/
@@ -500,7 +509,7 @@ canvas {
 
 /* QUIZZES */
 #titulo{
-  color: #ffffff;
+  color: #000000;
 }
 #graficosQuiz{
   display: flex;
@@ -560,7 +569,7 @@ canvas {
     height: 90%;
     border: #11D53C 2PX solid;
     border-radius: 20px;
-    margin-left: 45px;
+    margin-left: 22%;
     margin-top: 85px;
 }
 #titleDash{
@@ -574,4 +583,16 @@ canvas {
     border-radius: 20px;
     margin-left: 45px;
     margin-top: 85px;
+}
+
+/* User */
+#nomeUser{
+  color: white;
+  margin-left: 5%;
+    font-size: 150%;
+}
+#emailUser{
+  color: white;
+  margin-left: 5%;
+  font-size: 150%;
 }
