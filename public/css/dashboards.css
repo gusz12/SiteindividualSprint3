@@ -486,6 +486,8 @@ canvas {
   width: 50%;
   height: 70%;
   background-color: #11D53C;
+  align-self: center;
+  justify-self: center;
 }
 
 
@@ -563,4 +565,13 @@ canvas {
 }
 #titleDash{
   margin-left: 15px;
+}
+
+#episodios{
+    width: 32%;
+    height: 90%;
+    border: #11D53C 2PX solid;
+    border-radius: 20px;
+    margin-left: 45px;
+    margin-top: 85px;
 }

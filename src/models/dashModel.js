@@ -82,18 +82,23 @@ function exibirTempJogadores() {
     group by 
         temporadaFavorita
     order by 
-        quantidade desc limit 3;
+        quantidade desc;
     `;
     
     return database.executar(instrucao);
 }
 
-function exibirEpJogadores(fkUsuario) {
+function exibirEpJogadores() {
     var instrucao = `
-    select * from jogos_usuarios ju
-    inner join usuarios u
-    on u.idUsuario = ju.fkUsuario
-    where u.idUsuario = ${fkUsuario};
+    select 
+    episodioFavorito,
+    count(*) as quantidade
+    from 
+        usuarios
+    group by 
+    episodioFavorito
+    order by 
+        quantidade desc;
     `;
     
     return database.executar(instrucao);

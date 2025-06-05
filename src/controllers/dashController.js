@@ -120,9 +120,7 @@ function exibirResultadoJogo3(req, res) {
     });
 }
     function exibirEpJogadores(req, res) {
-    // Aqui faço a requisição do fkUsuario que vem na pagina da dash para usar como parametro nas funcoes
-    let fkUsuario = req.params.fkUsuario;
-    dashModel.exibirEpJogadores(fkUsuario).then(function (resultado) {
+    dashModel.exibirEpJogadores().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
